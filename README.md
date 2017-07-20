@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/YooShibu/get-deps-rec.svg?branch=master)](https://travis-ci.org/YooShibu/get-deps-rec)
+
 # get-deps-rec
 
 Get dependencies of node modules recursively.
