@@ -1,6 +1,7 @@
 import { readFile } from "fs";
 import { join } from "path";
 import { Dependencies } from "../index.d";
+import { once } from "./util";
 
 export type Modules = {
     [module: string]: string;
@@ -22,14 +23,15 @@ function createWalker(path_node_modules: string, length_module_names: number, cb
     let module_nodes = length_module_names;
     let complete_getDeps = 0;
     const dependencies: Dependencies = {};
+    const _cb = once(cb);
     return function walk(err: Error | null, module_name: string, modules: Modules): void {
         if (err !== null)
-            return cb(err, {});
+            return _cb(err, {});
         const _modules = getNewDeps(modules, dependencies);
         Object.assign(dependencies, { [module_name]: modules });
         module_nodes += _modules.length;
         if (++complete_getDeps === module_nodes)
-            return cb(null, dependencies);
+            return _cb(null, dependencies);
         for (let i = 0; _modules.length > i; ++i)
             getDep(path_node_modules, _modules[i], walk);
     };
