@@ -1,5 +1,7 @@
 # get-deps-rec
 
+Get dependencies of node modules recursively.
+
 ## Installation
 
     npm install get-deps-rec
