@@ -11,9 +11,8 @@ describe("get-deps-tree", () => {
             const path_jasmine = join(path_node_modules, "jasmine", "package.json");
             const packageJSON = readFileSync(path_jasmine, { encoding: "utf-8" });
             const dependencies = JSON.parse(packageJSON).dependencies;
-            getDep(path_node_modules, "jasmine", (err, module_name, deps) => {
+            getDep(path_node_modules, "jasmine", (err, deps) => {
                 expect(err).toBeNull();
-                expect(module_name).toBe("jasmine");
                 expect(deps).toEqual(dependencies);
                 done();
             });
@@ -38,6 +37,7 @@ describe("get-deps-tree", () => {
             expect(result).toEqual(["react", "typescript"]);
         });
     });
+
     
     describe("getDeps", () => {
         it("should pass empty object if modules is empty array", done => {
@@ -63,6 +63,15 @@ describe("get-deps-tree", () => {
                 });
                 done();
             });
+        });
+        it("should not change module_names array", done => {
+            const module_names = ["typescript", "jasmine-core"];
+            getDeps(path_node_modules, module_names, (err, deps) => {
+                expect(err).toBeNull();
+                expect(module_names).toEqual(["typescript", "jasmine-core"]);
+                done();
+            });
+            
         });
         it("should pass all dependencies to callback function", done => {
             const alldeps  = [
