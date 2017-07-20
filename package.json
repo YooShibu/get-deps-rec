@@ -36,5 +36,10 @@
     "package.json",
     "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YooShibu/get-deps-rec.git"
+  },
+  "homepage": "https://github.com/YooShibu/get-deps-rec.git",
   "types": "index.d.ts"
 }
