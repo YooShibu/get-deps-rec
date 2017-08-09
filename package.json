@@ -1,6 +1,6 @@
 {
   "name": "get-deps-rec",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "get dependencies of node modules recursively",
   "main": "build/index.js",
   "scripts": {
