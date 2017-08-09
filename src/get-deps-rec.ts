@@ -20,7 +20,8 @@ function _getDeps(path_node_modules: string, module_names: string[], dependencie
             return cb(err, {});
         const newDeps = getNewDeps(modules, dependencies);
         Object.assign(dependencies, { [module_name]: modules });
-        _getDeps(path_node_modules, module_names.concat(newDeps), dependencies, cb);
+        const _module_names = module_names.concat(newDeps);
+        setImmediate(_getDeps, path_node_modules, _module_names, dependencies, cb);
     });
 }
 
