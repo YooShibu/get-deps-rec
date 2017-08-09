@@ -7,7 +7,7 @@
     "bundle": "rollup -c rollup.config.js",
     "pretest": "tsc",
     "posttest": "remap-istanbul -i ./coverage/coverage.json -o ./coverage/ts-report -t html",
-    "prepublish": "npm run bundle",
+    "prepack": "npm run bundle",
     "test": "istanbul cover ./node_modules/jasmine/bin/jasmine.js -- --config=jasmine.json"
   },
   "keywords": [
